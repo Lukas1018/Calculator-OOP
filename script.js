@@ -27,7 +27,7 @@ kai visas funkcionalumas veikia, CSS faile gražinam UI, rekomenduoju naudot gri
 
 //! nebūtina sekti rekomendacijų, nes galimų sprendimų yra n, bet surašiau, kad padėt, jei išvis nėra minčių;
 //! geriau skirkit pradžioj šiek tiek laiko pagalvot bendrai bendram planui aptart ir gal savo flow sugalvosit
-debugger;
+// debugger;
 const numbers = document.querySelectorAll("button[data-number]");
 const operators = document.querySelectorAll("button[data-operation]");
 const equals = document.querySelector("button[data-equals]");
@@ -48,9 +48,19 @@ class Calculator {
     this.currentOperand = "";
     this.previousOperand = "";
   }
-  clear() {}
+  clear() {
+    this.operation = "";
+    this.currentOperand = "";
+    this.previousOperand = "";
+  }
   delete() {
-    this.currentOperand = currentOperand.slice(0, 3);
+    if (this.currentOperand !== "") {
+      this.currentOperand = this.currentOperand.slice(0, length - 1);
+    } else if (this.currentOperand === "" && this.operation !== "") {
+      this.currentOperand = this.previousOperand;
+      this.previousOperand = "";
+      this.operation = "";
+    }
   }
   appendNumber(number) {
     this.currentOperand = this.currentOperand.toString() + number.toString();
@@ -102,7 +112,7 @@ class Calculator {
         return;
     }
 
-    this.currentOperand = computation;
+    this.currentOperand = computation.toString();
 
     this.operation = undefined;
 
@@ -149,5 +159,3 @@ delButton.addEventListener("click", () => {
   calculator.delete();
   calculator.updateDisplay();
 });
-
-console.log(numbers);

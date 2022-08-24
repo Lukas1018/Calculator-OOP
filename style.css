@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+.calculator-grid {
+  width: 25%;
+  margin: 5rem auto;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(5, auto);
+  border: 2px solid rgb(110, 225, 185);
+}
+.output {
+  grid-column: 1/5;
+  background-color: rgb(60, 133, 107);
+  color: white;
+  height: 4.5rem;
+  font-size: x-large;
+  text-align: right;
+  padding: 0.5rem;
+}
+.span-two {
+  grid-column: span 2;
+}
+button {
+  border-radius: 0;
+  border: 1.5px solid white;
+  background-color: aliceblue;
+  padding: 1.5rem 0;
+}
